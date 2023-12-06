@@ -1,10 +1,12 @@
-import { Controller, Get, Post, Body, Param, Delete, HttpStatus, NotFoundException, Put, Query, Res } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, HttpStatus, NotFoundException, Put, Query, Res, UseFilters } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
+import { HttpExceptionFilter } from '../http-exeption.filter';
 //import { UpdateProductDto } from './dto/update-product.dto';
 //import { ValidateObjectId } from './validate-object-id.pipes';
 
 @Controller('products')
+@UseFilters(HttpExceptionFilter)
 export class ProductsController {
   constructor(private productsService: ProductsService) {}
 
