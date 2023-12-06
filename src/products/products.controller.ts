@@ -1,35 +1,67 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, HttpStatus, NotFoundException, Put, Query, Res } from '@nestjs/common';
 import { ProductsService } from './products.service';
-//import { CreateProductDto } from './dto/create-product.dto';
+import { CreateProductDto } from './dto/create-product.dto';
 //import { UpdateProductDto } from './dto/update-product.dto';
+//import { ValidateObjectId } from './validate-object-id.pipes';
 
 @Controller('products')
 export class ProductsController {
-  constructor(private readonly productsService: ProductsService) {}
+  constructor(private productsService: ProductsService) {}
 
-  @Post()
-  async createProduct(@Body() body: any) {
-    const { id, name, price } = body;
-    return this.productsService.createProduct(id, name, price);
+  //create a product
+  @Post('/create')
+  async createProduct(@Res() res, @Body() CreateProductDto: CreateProductDto) {
+    const newProduct = await this.productsService.createProduct(CreateProductDto);
+    return res.status(HttpStatus.OK).json({
+      message: 'Product has been made successfully',
+      post: this.createProduct,
+    });
   }
 
-  @Get()
-  findAll() {
-    return this.productsService.findAll();
+  //get all products
+  @Get('products')
+  async getProducts(@Res() res) {
+    const products = await this.productsService.getProducts();
+    return res.status(HttpStatus.OK).json(products);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.productsService.findOne(+id);
+  //get product by id
+  @Get('products/:productID') 
+  async getProduct(@Res() res, @Param('productID'/*, new ValidateObjectId()*/) productID) {
+    const product = await this.productsService.getProduct(productID);
+    if (!product) {
+      throw new NotFoundException('Product does not exist');
+    }
+    return res.status(HttpStatus.OK).json(product);
+  }
+  
+  //edit product
+  @Put('/edit')
+  async editProduct(
+    @Res() res,
+    @Query('productID'/*, new ValidateObjectId()*/) productID,
+    @Body() CreateProductDto: CreateProductDto,
+  ) {
+    const editedProduct = await this.productsService.editProduct(productID, CreateProductDto);
+    if (!editedProduct) {
+      throw new NotFoundException('Product deos not exist');
+    }
+    return res.status(HttpStatus.OK).json({
+      message: 'Past has been updated successfully',
+      product: editedProduct,
+    });
   }
 
-  /*@Patch(':id')
-  update(@Param('id') id: string, @Body() updateProductDto: UpdateProductDto) {
-    return this.productsService.update(+id, updateProductDto);
-  }*/
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.productsService.remove(+id);
+  //delete product by id
+  @Delete('/delete')
+  async deleteProduct(@Res() res, @Query('productID'/*, new ValidateObjectId()*/) productID) {
+    const deletedProduct = await this.productsService.deleteProduct(productID);
+    if (!deletedProduct) {
+      throw new NotFoundException('Product does not exist');
+    }
+    return res.status(HttpStatus.OK).json({
+      message: 'Post has been deleted',
+      product: deletedProduct,
+    });
   }
 }
