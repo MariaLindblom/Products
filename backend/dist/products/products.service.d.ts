@@ -23,6 +23,7 @@
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose/types/inferschematype" />
 import { CreateProductDto } from './dto/create-product.dto';
+import { UpdateProductDto } from './dto/update-product.dto';
 import { Product } from './products.interface';
 import { Model } from 'mongoose';
 export declare class ProductsService {
@@ -32,7 +33,7 @@ export declare class ProductsService {
     createProduct(CreateProductDto: CreateProductDto): Promise<Product>;
     getProducts(): Promise<Product[]>;
     getProduct(productID: number): Promise<Product>;
-    editProduct(productID: number, createProductDto: CreateProductDto): Promise<import("mongoose").Document<unknown, {}, Product> & Product & {
+    editProduct(productID: number, UpdateProductDto: UpdateProductDto): Promise<import("mongoose").Document<unknown, {}, Product> & Product & {
         _id: import("mongoose").Types.ObjectId;
     }>;
     deleteProduct(productID: number): Promise<any>;

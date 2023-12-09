@@ -39,9 +39,9 @@ let ProductsService = ProductsService_1 = class ProductsService {
         this.logger.log(`Returning post with id: ${productID}`);
         return product;
     }
-    async editProduct(productID, createProductDto) {
+    async editProduct(productID, UpdateProductDto) {
         const editedProduct = await this.productModel
-            .findByIdAndUpdate(productID, createProductDto, { new: true });
+            .findByIdAndUpdate(productID, UpdateProductDto, { new: true });
         this.logger.log(`Updating product with id: ${productID}`);
         return editedProduct;
     }

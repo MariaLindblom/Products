@@ -1,6 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
-//import { UpdateProductDto } from './dto/update-product.dto';
+import { UpdateProductDto } from './dto/update-product.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Product } from './products.interface';
 import { Model } from 'mongoose';
@@ -31,9 +31,9 @@ export class ProductsService {
     return product;
   }
 
-  async editProduct(productID: number, createProductDto: CreateProductDto) {
+  async editProduct(productID: number, UpdateProductDto: UpdateProductDto) {
     const editedProduct = await this.productModel
-      .findByIdAndUpdate(productID, createProductDto, { new: true });
+      .findByIdAndUpdate(productID, UpdateProductDto, { new: true });
     this.logger.log(`Updating product with id: ${productID}`);
     return editedProduct;
   }

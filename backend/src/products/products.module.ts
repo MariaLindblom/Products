@@ -12,8 +12,7 @@ import { ProductSchema } from './products.schema';
   controllers: [ProductsController],
   providers: [ProductsService],
 })
-export class ProductsModule implements NestModule {
-  configure(consumer: MiddlewareConsumer) {
-    
-  }
+export class ProductsModule //implements NestModule 
+{
+  //configure(consumer: MiddlewareConsumer){  }
 }

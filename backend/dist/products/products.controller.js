@@ -17,6 +17,8 @@ const common_1 = require("@nestjs/common");
 const products_service_1 = require("./products.service");
 const create_product_dto_1 = require("./dto/create-product.dto");
 const http_exeption_filter_1 = require("../http-exeption.filter");
+const update_product_dto_1 = require("./dto/update-product.dto");
+const validate_object_id_pipes_1 = require("../validate-object-id.pipes");
 let ProductsController = class ProductsController {
     constructor(productsService) {
         this.productsService = productsService;
@@ -25,7 +27,7 @@ let ProductsController = class ProductsController {
         const newProduct = await this.productsService.createProduct(CreateProductDto);
         return res.status(common_1.HttpStatus.OK).json({
             message: 'Product has been made successfully',
-            post: this.createProduct,
+            post: newProduct,
         });
     }
     async getProducts(res) {
@@ -39,13 +41,13 @@ let ProductsController = class ProductsController {
         }
         return res.status(common_1.HttpStatus.OK).json(product);
     }
-    async editProduct(res, productID, CreateProductDto) {
-        const editedProduct = await this.productsService.editProduct(productID, CreateProductDto);
+    async editProduct(res, productID, UpdateProductDto) {
+        const editedProduct = await this.productsService.editProduct(productID, UpdateProductDto);
         if (!editedProduct) {
             throw new common_1.NotFoundException('Product deos not exist');
         }
         return res.status(common_1.HttpStatus.OK).json({
-            message: 'Past has been updated successfully',
+            message: 'Product has been updated successfully',
             product: editedProduct,
         });
     }
@@ -55,7 +57,7 @@ let ProductsController = class ProductsController {
             throw new common_1.NotFoundException('Product does not exist');
         }
         return res.status(common_1.HttpStatus.OK).json({
-            message: 'Post has been deleted',
+            message: 'Product has been deleted',
             product: deletedProduct,
         });
     }
@@ -77,28 +79,28 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], ProductsController.prototype, "getProducts", null);
 __decorate([
-    (0, common_1.Get)('products/:productID'),
+    (0, common_1.Get)('get/:productID'),
     __param(0, (0, common_1.Res)()),
-    __param(1, (0, common_1.Param)('productID')),
+    __param(1, (0, common_1.Param)('productID', new validate_object_id_pipes_1.ValidateObjectId())),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", Promise)
 ], ProductsController.prototype, "getProduct", null);
 __decorate([
-    (0, common_1.Put)('/edit'),
+    (0, common_1.Put)('edit/:productID'),
     __param(0, (0, common_1.Res)()),
-    __param(1, (0, common_1.Query)('productID')),
+    __param(1, (0, common_1.Param)('productID', new validate_object_id_pipes_1.ValidateObjectId())),
     __param(2, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Object, create_product_dto_1.CreateProductDto]),
+    __metadata("design:paramtypes", [Object, Object, update_product_dto_1.UpdateProductDto]),
     __metadata("design:returntype", Promise)
 ], ProductsController.prototype, "editProduct", null);
 __decorate([
-    (0, common_1.Delete)('/delete'),
+    (0, common_1.Delete)('delete/:productID'),
     __param(0, (0, common_1.Res)()),
-    __param(1, (0, common_1.Query)('productID')),
+    __param(1, (0, common_1.Param)('productID')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:paramtypes", [Object, Number]),
     __metadata("design:returntype", Promise)
 ], ProductsController.prototype, "deleteProduct", null);
 exports.ProductsController = ProductsController = __decorate([

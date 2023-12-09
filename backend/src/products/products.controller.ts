@@ -2,8 +2,8 @@ import { Controller, Get, Post, Body, Param, Delete, HttpStatus, NotFoundExcepti
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { HttpExceptionFilter } from '../http-exeption.filter';
-//import { UpdateProductDto } from './dto/update-product.dto';
-//import { ValidateObjectId } from './validate-object-id.pipes';
+import { UpdateProductDto } from './dto/update-product.dto';
+import { ValidateObjectId } from '../validate-object-id.pipes';
 
 @Controller('products')
 @UseFilters(HttpExceptionFilter)
@@ -16,7 +16,7 @@ export class ProductsController {
     const newProduct = await this.productsService.createProduct(CreateProductDto);
     return res.status(HttpStatus.OK).json({
       message: 'Product has been made successfully',
-      post: this.createProduct,
+      post: newProduct,
     });
   }
 
@@ -28,8 +28,8 @@ export class ProductsController {
   }
 
   //get product by id
-  @Get('products/:productID') 
-  async getProduct(@Res() res, @Param('productID'/*, new ValidateObjectId()*/) productID) {
+  @Get('get/:productID') 
+  async getProduct(@Res() res, @Param('productID', new ValidateObjectId()) productID) {
     const product = await this.productsService.getProduct(productID);
     if (!product) {
       throw new NotFoundException('Product does not exist');
@@ -37,32 +37,32 @@ export class ProductsController {
     return res.status(HttpStatus.OK).json(product);
   }
   
-  //edit product
-  @Put('/edit')
+  //edit product by id
+  @Put('edit/:productID')
   async editProduct(
     @Res() res,
-    @Query('productID'/*, new ValidateObjectId()*/) productID,
-    @Body() CreateProductDto: CreateProductDto,
+    @Param('productID', new ValidateObjectId()) productID,
+    @Body() UpdateProductDto: UpdateProductDto,
   ) {
-    const editedProduct = await this.productsService.editProduct(productID, CreateProductDto);
+    const editedProduct = await this.productsService.editProduct(productID, UpdateProductDto);
     if (!editedProduct) {
       throw new NotFoundException('Product deos not exist');
     }
     return res.status(HttpStatus.OK).json({
-      message: 'Past has been updated successfully',
+      message: 'Product has been updated successfully',
       product: editedProduct,
     });
   }
 
   //delete product by id
-  @Delete('/delete')
-  async deleteProduct(@Res() res, @Query('productID'/*, new ValidateObjectId()*/) productID) {
+  @Delete('delete/:productID')
+  async deleteProduct(@Res() res, @Param('productID') productID: number) {
     const deletedProduct = await this.productsService.deleteProduct(productID);
     if (!deletedProduct) {
       throw new NotFoundException('Product does not exist');
     }
     return res.status(HttpStatus.OK).json({
-      message: 'Post has been deleted',
+      message: 'Product has been deleted',
       product: deletedProduct,
     });
   }

@@ -13,8 +13,6 @@ const products_controller_1 = require("./products.controller");
 const mongoose_1 = require("@nestjs/mongoose");
 const products_schema_1 = require("./products.schema");
 let ProductsModule = class ProductsModule {
-    configure(consumer) {
-    }
 };
 exports.ProductsModule = ProductsModule;
 exports.ProductsModule = ProductsModule = __decorate([
