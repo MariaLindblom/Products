@@ -3,11 +3,13 @@ import './App.css';
 import axios from 'axios';
 
 function App() {
-  const [message, setMessage] = useState('');
+  const [products, setProducts] = useState<{name: string; price: string}[]>([]);
+  
   useEffect(() => {
-    axios.get('http://localhost:5000')
+    axios.get('http://localhost:5000/products/products')
       .then(response => {
-        setMessage(response.data);
+        setProducts(response.data);
+        console.log(products);
       })
       .catch(error => {
         console.error(error);
@@ -15,7 +17,8 @@ function App() {
   }, []);
   return (
     <div>
-      <h1>{message}</h1>
+      <h1>Products</h1>
+      {products.map(product => <div>{product.name}{ product.price} €</div>)}
     </div>
   );
 }
