@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const Products = () => {
-  const [products, setProducts] = useState<{name: string; price: string}[]>([]);
+  const [products, setProducts] = useState<{name: string; price: number}[]>([]);
   
   useEffect(() => {
-    axios.get('http://localhost:5000/products/products')
+    axios.get('http://localhost:5000/products')
       .then(response => {
         setProducts(response.data);
         console.log(products);
@@ -15,10 +15,21 @@ const Products = () => {
       });
   }, []);
   return (
-    <div className='products'>
-      <h1>Products</h1>
-      {products.map(product => <div>{product.name}{ product.price} €</div>)}
+    <>
+    <h1>Products</h1>
+    <div className='products-grid'>
+      <div className='products'>
+        {products.map(product =>
+        <>
+        <div>
+        <h3>{product.name}</h3>
+        <h5>Price: {product.price} €</h5>
+        <p>Overall rating: _ stars</p>
+        </div>
+        </>)}
     </div>
+    </div>
+    </>
   );
 }
 

@@ -21,7 +21,7 @@ export class ProductsController {
   }
 
   //get all products
-  @Get('products')
+  @Get('')
   async getProducts(@Res() res) {
     const products = await this.productsService.getProducts();
     return res.status(HttpStatus.OK).json(products);
