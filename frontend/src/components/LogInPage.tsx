@@ -1,5 +1,5 @@
 export const LogInPage = () => {
     return (
-        <h1>Log in please</h1>
+        <h1>Log in form comes here</h1>
     );
 }
