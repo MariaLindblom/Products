@@ -1,20 +1,19 @@
 import { Link, Outlet } from "react-router-dom";
+import { StyledNavBar, StyledUl } from "../Styles";
 
 export default function Navbar() {
   return (
     <>
-      <header className="navbar">
-        <nav>
-          <ul>
+      <StyledNavBar>
+          <StyledUl>
             <li>
               <Link to="/">Products</Link>
             </li>
             <li>
               <Link to="LogInPage">Log in</Link>
             </li>
-          </ul>
-        </nav>
-      </header>
+          </StyledUl>
+      </StyledNavBar>
       <main>
         <Outlet />
       </main>

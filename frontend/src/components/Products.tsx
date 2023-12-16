@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { StyledGrid, H1, StyledDiv, H5 } from '../Styles';
+
 
 const Products = () => {
   const [products, setProducts] = useState<{name: string; price: number}[]>([]);
@@ -16,19 +18,17 @@ const Products = () => {
   }, []);
   return (
     <>
-    <h1>Products</h1>
-    <div className='products-grid'>
-      <div className='products'>
+    <H1>Products</H1>
+    <StyledGrid>
         {products.map(product =>
         <>
-        <div>
+        <StyledDiv>
         <h3>{product.name}</h3>
-        <h5>Price: {product.price} €</h5>
-        <p>Overall rating: _ stars</p>
-        </div>
+        <H5>Price: {product.price} €</H5>
+        <p>Overall rating: *amount of stars here*</p>
+        </StyledDiv>
         </>)}
-    </div>
-    </div>
+    </StyledGrid>
     </>
   );
 }

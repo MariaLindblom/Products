@@ -1,5 +1,7 @@
+import { H1 }  from '../Styles';
+
 export const LogInPage = () => {
     return (
-        <h1>Log in form comes here</h1>
+        <H1>Log in form comes here</H1>
     );
 }
