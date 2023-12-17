@@ -3,7 +3,8 @@ Website for viewing and rating products. Log in to modify, add and delete produc
 
 ### Backend:
 - NestJS
-- MongoDB
+- MongoDB & Mongoose
 
 ### Frontend:
 - React
+- Styled Components

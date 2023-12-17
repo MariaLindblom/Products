@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Products from './Products';
-import { LogInPage } from "./LogInPage";
-import { AdminPage } from "./AdminPage";
+import LogInPage from "./LogInPage";
+import AdminPage from "./AdminPage";
 
 export const RoutesApp = () => {
     return (

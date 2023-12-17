@@ -11,8 +11,9 @@ import {
 } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
-import { LogInPage } from "./components/LogInPage";
+import LogInPage from "./components/LogInPage";
 import Products from './components/Products';
+import AdminPage from './components/AdminPage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -20,6 +21,7 @@ const router = createBrowserRouter(
       <Route path="/" element={<Navbar />}>
         <Route index element={<Products />} />
         <Route path="LogInPage" element={<LogInPage />} />
+        <Route path='AdminPage' element={<AdminPage />} />
       </Route>
     </>
   )

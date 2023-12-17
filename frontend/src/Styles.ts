@@ -34,3 +34,31 @@ a {
         text-decoration-color: white;
     };
 }`
+
+export const StyledSection = styled.section`
+background: #fff;
+`
+
+export const StyledLogIn = styled.form`
+border: 1px solid hsl(0, 0%, 70%);
+border-radius: 10px;
+padding: 20px;
+margin: 10px;
+text-align: center;
+max-width: 250px;
+display: inline-block;
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+height: 200px;
+width: 300px;`
+
+export const StyledLoginButton = styled.button`
+border: none;
+background: #669999;
+padding: 12px 24px;
+margin: 8px;
+font-size: 24px;
+border-radius: 8px;
+cursor: pointer;`

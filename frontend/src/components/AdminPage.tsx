@@ -1,7 +1,9 @@
 import { H1 }  from '../Styles';
 
-export const AdminPage = () => {
+const AdminPage = () => {
     return (
         <H1>Welcome to the admin page</H1>
     );
 }
+
+export default AdminPage;
