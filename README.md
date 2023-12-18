@@ -45,6 +45,7 @@ In products/frontend folder:
 npm start
 ```
 
+
 > [!WARNING]
 > The project isn't finished and there is a lot of components that do not work yet
 
@@ -61,11 +62,15 @@ I tested the API using postman. See examples below.
 
 I have used NestJS and TypeScript before, so this time I felt good with the backend. I used MongoDB for the first time and it went alright.
 
-The frontend used more time as React wasn't that familiar, but I quickly got how styled components work, which I liked using. 
+The frontend used more time as React wasn't that familiar, but I quickly got how styled components work, which I liked using.
+
 I could have planned better on what to do, since at the end especially I was rushing to get things done, instead of focusing on one thing at a time.
+
+This is the biggest project I have done by myself, but it's a great learning experience and in the future I won't be as a beginner at making projects with tools that I'll be now more familiar with.
 
 ## What the project is missing
 - Log In and routing to the adminpage after a successful login
+- More error handling and letting the user know if for example the data is loading
 - Middleware
 - Review stars and a product's overall rating and a comment about it
 - Storing the product's price as cents and returning the value to user as euros
