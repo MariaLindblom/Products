@@ -9,24 +9,27 @@ Website for viewing and rating products. Products can be given star reviews (1-5
 - React
 - Styled Components
 
+
 > [!NOTE]
 > Both backend and frontend use TypeScript.
 
 ## Dependencies
 
-# Backend:
+### Backend:
 - nestjs/common: "10.0.0",
 - nestjs/core: "10.0.0",
 - nestjs/mongoose: "10.0.2",
 - mongodb: "6.3.0",
+
 From the file products/backend/package.json
 
-# Frontend:
+### Frontend:
 - axios: "1.6.2",
 - react: "18.2.0",
 - react-dom: "18.2.0",
 - react-router-dom: "6.20.1",
 - styled-components: "6.1.1"
+
 From the file products/frontend/package.json
 
 ## Running the project locally
@@ -48,9 +51,9 @@ npm start
 ## Testing the API
 I tested the API using postman. See examples below.
 Gettin all the products:
-(https://github.com/MariaLindblom/Products/photos/postmantest.png?raw=true)
+![postman testing](photos/postmantest.png?raw=true)
 Updating a product's price:
-(https://github.com/MariaLindblom/Products/photos/postmantest2.png?raw=true)
+![another postman test](photos/postmantest2.png?raw=true)
 
 ## After thoughts & what I learned
 
@@ -59,7 +62,7 @@ I have used NestJS and TypeScript before, so this time I felt good with the back
 The frontend used more time as React wasn't that familiar, but I quickly got how styled components work, which I liked using. 
 I could have planned better on what to do, since at the end especially I was rushing to get things done, instead of focusing on one thing at a time.
 
-## What needs to be done
+## What the project is missing
 - Log In and routing to the adminpage after a successful login
 - Middleware
 - Review stars and a product's overall rating and a comment about it
