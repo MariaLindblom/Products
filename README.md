@@ -50,9 +50,11 @@ npm start
 
 ## Testing the API
 I tested the API using postman. See examples below.
-Gettin all the products:
+
+### Getting all the products:
 ![postman testing](photos/postmantest.png?raw=true)
-Updating a product's price:
+
+### Updating a product's price:
 ![another postman test](photos/postmantest2.png?raw=true)
 
 ## After thoughts & what I learned
