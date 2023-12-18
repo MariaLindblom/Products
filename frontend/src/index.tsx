@@ -2,7 +2,6 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
 import {
   Route,
   RouterProvider,
@@ -21,7 +20,7 @@ const router = createBrowserRouter(
       <Route path="/" element={<Navbar />}>
         <Route index element={<Products />} />
         <Route path="LogInPage" element={<LogInPage />} />
-        <Route path='AdminPage' element={<AdminPage />} />
+        <Route path="AdminPage" element={<AdminPage />} />
       </Route>
     </>
   )

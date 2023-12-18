@@ -35,10 +35,6 @@ a {
     };
 }`
 
-export const StyledSection = styled.section`
-background: #fff;
-`
-
 export const StyledLogIn = styled.form`
 border: 1px solid hsl(0, 0%, 70%);
 border-radius: 10px;
@@ -53,12 +49,3 @@ left: 50%;
 transform: translate(-50%,-50%);
 height: 200px;
 width: 300px;`
-
-export const StyledLoginButton = styled.button`
-border: none;
-background: #669999;
-padding: 12px 24px;
-margin: 8px;
-font-size: 24px;
-border-radius: 8px;
-cursor: pointer;`

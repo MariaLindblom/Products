@@ -1,5 +1,7 @@
-import { H1, StyledLogIn, StyledSection, StyledLoginButton, StyledGrid, StyledDiv }  from '../Styles';
+import { H1, StyledLogIn }  from '../Styles';
 import { useState } from 'react';
+
+//this is a work in progress, but is supposed to direct to the adminpage after a successful login
 
 const LogInPage = () => {
     type Inputs = { username: string, password: string }
@@ -18,22 +20,20 @@ const LogInPage = () => {
   
   return (
     <>
-    <StyledSection>
     <StyledLogIn onSubmit={handleSubmit}>
     <H1>Log In</H1>
-        <input type='text' name='username' 
+        <input type='text' name='username' required
             placeholder='Username'
             value={inputs.username || ""}
             onChange={handleChange}
         />
-        <input type='text' name='password' 
+        <input type='password' name='password' required
             placeholder='Password' 
             value={inputs.password || ""}
             onChange={handleChange}
         />
         <input type='submit' value="Log In" />
     </StyledLogIn>
-    </StyledSection>
         </>
     );
 };
