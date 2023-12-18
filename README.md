@@ -57,7 +57,7 @@ I tested the API using postman. See examples below.
 ### Updating a product's price:
 ![another postman test](photos/postmantest2.png?raw=true)
 
-## After thoughts & what I learned
+## Afterthoughts & what I learned
 
 I have used NestJS and TypeScript before, so this time I felt good with the backend. I used MongoDB for the first time and it went alright.
 
